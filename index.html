@@ -6,12 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="favicon.png" type="image/png" sizes="16x16">
     <title>【快点PS】PS软件网页版，ps在线图片处理工具photopea-欢哥科技</title>
-<meta name="keywords" content="在线ps,ps网页版,ps在线图片处理">
-<meta name="description" content="快点PS是一款专业精简的在线ps图片处理软件，免下载、免安装，直接在浏览器打开网页版就可随时随地用它修正，调整和美化您的图片。">
+    <meta name="keywords" content="在线ps,ps网页版,ps在线图片处理">
+    <meta name="description" content="快点PS是一款专业精简的在线ps图片处理软件，免下载、免安装，直接在浏览器打开网页版就可随时随地用它修正，调整和美化您的图片。">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://jsd.onmicrosoft.cn/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://cdnjs.loli.net/ajax/libs/jquery/3.5.1/jquery.min.js" type="text/javascript"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.loli.net/ajax/libs/popper.js/1.16.0/umd/popper.min.js" type="text/javascript"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://jsd.onmicrosoft.cn/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"
+        type="text/javascript"></script>
     <style>
         body {
-            margin: 0px;
-            display: flex;
+            margin: 0px auto;
             height: 100%;
         }
 
@@ -28,7 +36,68 @@
 </head>
 
 <body>
-    <iframe src="https://www.photopea.com/"></iframe>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">快点PS</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link active" href="#">首页<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="https://www.remove.bg/zh" >抠图</a>
+                    <a class="nav-link" href="https://svg.quickso.cn" >SVG编辑</a>
+                    <a class="nav-link" href="https://ya.quickso.cn" >图片压缩</a>
+                    <!-- onclick="changeIframeSrc('')" -->
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <iframe class="container-fluid" src="https://www.photopea.com/" id="pskuang"></iframe>
+    </main>
+
+    <footer>
+        <p class="d-block my-3 text-center">Copyright &copy;
+            <span id="year"></span> 欢哥科技 All rights reserved
+        </p>
+        <script type="text/javascript">
+            const yearSpan = document.getElementById("year");
+            const currentYear = new Date().getFullYear().toString();
+            yearSpan.appendChild(document.createTextNode(currentYear));
+        </script>
+    </footer>
+    <script>
+
+
+
+
+
+        var iframe = document.getElementById('pskuang');
+        var screenHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+        var iframeHeight = Math.floor(screenHeight * 0.90); // 计算出高度
+        iframe.style.height = iframeHeight + 'px'; // 设置iframe的高度
+
+        var iframeDoc = iframe.contentDocument || iframe.contentWindow.document; // 获取iframe内部的文档对象
+
+        // 在iframe内部找到class为"flexrow app"的父级div
+        var parentDiv = iframeDoc.querySelector('.flexrow.app');
+        if (parentDiv) {
+            // 找到父级div下面的第二个div并删除
+            var secondDiv = parentDiv.querySelector('div:nth-child(2)');
+            if (secondDiv) {
+                parentDiv.removeChild(secondDiv);
+            }
+        }
+        function changeIframeSrc(newSrc) {
+            var iframe = document.getElementById('pskuang');
+            iframe.src = newSrc;
+        }
+
+
+
+    </script>
 </body>
 
 </html>
